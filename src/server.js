@@ -53,7 +53,9 @@ proxy.on('error', (error, req, res) => {
     console.error('proxy error', error);
   }
   if (!res.headersSent) {
-    res.writeHead(500, {'content-type': 'application/json'});
+    if (typeof res.writeHead === 'function') {
+      res.writeHead(500, {'content-type': 'application/json'});
+    }
   }
 
   json = {error: 'proxy_error', reason: error.message};
