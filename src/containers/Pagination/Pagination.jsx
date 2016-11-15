@@ -4,7 +4,7 @@ import { List } from 'immutable';
 import { connect } from 'react-redux';
 import { VioletDataTable, VioletPaginator } from 'violet-paginator';
 
-import './violet.min.scss';
+// import './violet.min.scss';
 import './Pagination.scss';
 
 function paginate(list, page, pageSize) {
