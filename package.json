@@ -89,6 +89,7 @@
     "map-props": "^1.0.0",
     "multireducer": "^2.0.0",
     "piping": "^1.0.0-rc.4",
+    "pm2": "^2.1.5",
     "pretty-error": "^2.0.2",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.6",
