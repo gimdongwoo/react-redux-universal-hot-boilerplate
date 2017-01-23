@@ -1,12 +1,13 @@
 import express from 'express';
 import session from 'express-session';
 import bodyParser from 'body-parser';
-import config from '../src/config';
-import * as actions from './actions/index';
-import {mapUrl} from 'utils/url.js';
 import PrettyError from 'pretty-error';
 import http from 'http';
 import SocketIo from 'socket.io';
+
+import config from '../src/config';
+import * as actions from './actions/index';
+import { mapUrl } from './utils/common';
 
 const pretty = new PrettyError();
 const app = express();
@@ -28,7 +29,7 @@ app.use(bodyParser.json());
 app.use((req, res) => {
   const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);
 
-  const {action, params} = mapUrl(actions, splittedUrlPath);
+  const { action, params } = mapUrl(actions, splittedUrlPath);
 
   if (action) {
     action(req, params)
@@ -66,7 +67,7 @@ if (config.apiPort) {
   });
 
   io.on('connection', (socket) => {
-    socket.emit('news', {msg: `'Hello World!' from server`});
+    socket.emit('news', { msg: '\'Hello World!\' from server' });
 
     socket.on('history', () => {
       for (let index = 0; index < bufferSize; index++) {

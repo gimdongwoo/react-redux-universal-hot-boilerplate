@@ -4,14 +4,15 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createStore from './redux/create';
-import ApiClient from './helpers/ApiClient';
 import io from 'socket.io-client';
 import { Provider } from 'react-redux';
 import { Router, browserHistory, applyRouterMiddleware } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { ReduxAsyncConnect } from 'redux-connect';
 import { useScroll } from 'react-router-scroll';
+
+import createStore from './redux/create';
+import ApiClient from './helpers/ApiClient';
 
 import getRoutes from './routes';
 
@@ -21,7 +22,7 @@ const store = createStore(browserHistory, client, window.__data);
 const history = syncHistoryWithStore(browserHistory, store);
 
 function initSocket() {
-  const socket = io('', {path: '/ws'});
+  const socket = io('', { path: '/ws' });
   socket.on('news', (data) => {
     console.log(data);
     socket.emit('my other event', { my: 'data from client' });
@@ -36,9 +37,7 @@ function initSocket() {
 global.socket = initSocket();
 
 const component = (
-  <Router render={(props) =>
-        <ReduxAsyncConnect {...props} helpers={{ client }} filter={item => !item.deferred} render={applyRouterMiddleware(useScroll())}/>
-      } history={history}>
+  <Router render={(props) => <ReduxAsyncConnect {...props} helpers={{ client }} filter={item => !item.deferred} render={applyRouterMiddleware(useScroll())} />} history={history}>
     {getRoutes(store)}
   </Router>
 );

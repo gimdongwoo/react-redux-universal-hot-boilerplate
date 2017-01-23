@@ -4,39 +4,43 @@ import Helmet from 'react-helmet';
 import * as authActions from 'redux/modules/auth';
 
 @connect(
-  state => ({user: state.auth.user}),
+  state => ({ user: state.auth.user }),
   authActions)
 export default class Login extends Component {
   static propTypes = {
-    user: PropTypes.object,
+    user: PropTypes.shape({}),
     login: PropTypes.func,
     logout: PropTypes.func
   }
 
+  state = {
+    username: ''
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
-    const input = this.refs.username;
+    const input = this.state.username;
     this.props.login(input.value);
     input.value = '';
   }
 
   render() {
-    const {user, logout} = this.props;
+    const { user, logout } = this.props;
     const styles = require('./Login.scss');
     return (
       <div className={styles.loginPage + ' container'}>
-        <Helmet title="Login"/>
+        <Helmet title="Login" />
         <h1>Login</h1>
         {!user &&
         <div>
           <form className="login-form form-inline" onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <input type="text" ref="username" placeholder="Enter a username" className="form-control"/>
+              <input type="text" onChange={(event) => this.setState({ username: event.target.value })} placeholder="Enter a username" className="form-control" />
             </div>
-            <button className="btn btn-success" onClick={this.handleSubmit}><i className="fa fa-sign-in"/>{' '}Log In
+            <button className="btn btn-success" onClick={this.handleSubmit}><i className="fa fa-sign-in" />{' '}Log In
             </button>
           </form>
-          <p>This will "log you in" as this user, storing the username in the session of the API server.</p>
+          <p>This will [log you in] as this user, storing the username in the session of the API server.</p>
         </div>
         }
         {user &&
@@ -44,7 +48,7 @@ export default class Login extends Component {
           <p>You are currently logged in as {user.name}.</p>
 
           <div>
-            <button className="btn btn-danger" onClick={logout}><i className="fa fa-sign-out"/>{' '}Log Out</button>
+            <button className="btn btn-danger" onClick={logout}><i className="fa fa-sign-out" />{' '}Log Out</button>
           </div>
         </div>
         }

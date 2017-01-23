@@ -3,7 +3,7 @@ export default function survey(req) {
     setTimeout(() => {
       const errors = {};
       let valid = true;
-      if (~['bobby@gmail.com', 'timmy@microsoft.com'].indexOf(req.body.email)) {
+      if (['bobby@gmail.com', 'timmy@microsoft.com'].indexOf(req.body.email) >= -1) {
         errors.email = 'Email address already used';
         valid = false;
       }

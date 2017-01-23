@@ -8,7 +8,7 @@ export default class MiniInfoBar extends Component {
   }
 
   render() {
-    const {time} = this.props;
+    const { time } = this.props;
     return (
       <div className="mini-info-bar">
         The info bar was last loaded at

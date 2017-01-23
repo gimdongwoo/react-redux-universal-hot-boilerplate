@@ -4,7 +4,7 @@ import { bindActionCreators } from 'multireducer';
 import { increment } from 'redux/modules/counter';
 
 @connect(
-  (state, { as }) => ({count: state.counterCollection[as].data}),
+  (state, { as }) => ({ count: state.counterCollection[as].data }),
   (dispatch, { as }) => bindActionCreators({ increment }, dispatch, as)
 )
 export default class CounterButton extends Component {
@@ -19,8 +19,8 @@ export default class CounterButton extends Component {
   }
 
   render() {
-    const {count, increment} = this.props; // eslint-disable-line no-shadow
-    let {className} = this.props;
+    const { count, increment } = this.props; // eslint-disable-line no-shadow
+    let { className } = this.props;
     className += ' btn btn-default';
     return (
       <button className={className} onClick={increment}>
