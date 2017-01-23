@@ -20,7 +20,7 @@ export default class About extends Component {
 
         <p>This project was originally created by Erik Rasmussen
           (<a href="https://twitter.com/erikras" target="_blank" rel="noopener noreferrer">@erikras</a>), but has since seen many contributions
-          from the open source community. Thank you to <a href="https://github.com/erikras/react-redux-universal-hot-example/graphs/contributors" target="_blank" rel="noopener noreferrer">all the contributors</a>.
+          from the open source community. Thank you to <a href="https://github.com/gimdongwoo/react-redux-universal-hot-boilerplate/graphs/contributors" target="_blank" rel="noopener noreferrer">all the contributors</a>.
         </p>
 
         <h3>Mini Bar <span style={{ color: '#aaa' }}>(not that kind)</span></h3>

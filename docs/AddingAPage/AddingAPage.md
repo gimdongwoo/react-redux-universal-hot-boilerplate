@@ -67,7 +67,7 @@ constraints, such as requiring `Hello/Hello.js` to be renamed
 Following a style in the code that has no automatic effects is just organic
 growth, not convention.  For example, developers reading `./src/containers/index.js`
 must stop and figure out why all subdirectories except `DevTools` are exported.
-(`DevTools`)[`./src/containers/DevTools/DevTools.js`](https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/containers/DevTools/DevTools.js)
+(`DevTools`)[`./src/containers/DevTools/DevTools.js`](https://github.com/gimdongwoo/react-redux-universal-hot-boilerplate/blob/master/src/containers/DevTools/DevTools.js)
 contains a single function which should be
 [randomly](https://github.com/erikras/react-redux-universal-hot-example/issues/808)
 moved to `./src/utils` or `./src/helpers`.  Using a convention rule that all 
@@ -81,7 +81,7 @@ For example, In `App.js`, the new *NavItem* tag included a new value for the
 [understood](https://github.com/react-bootstrap/react-bootstrap/issues/432).
 All *eventkey* fields in `App.js` are unused and can be removed.  The 
 **cut and paste** style just compounds an
-[old error](https://github.com/erikras/react-redux-universal-hot-example/commit/d67a79c1e7da5367dc8922019ca726e69d56bf0e)
+[old error](https://github.com/gimdongwoo/react-redux-universal-hot-boilerplate/commit/d67a79c1e7da5367dc8922019ca726e69d56bf0e)
 and reinforces confusion.
 
 ![Edit App revisted](edit_app2.png)

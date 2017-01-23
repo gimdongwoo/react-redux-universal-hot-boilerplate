@@ -105,7 +105,7 @@ export default class App extends Component {
             {user &&
             <p className={styles.loggedInMessage + ' navbar-text'}>Logged in as <strong>{user.name}</strong>.</p>}
             <Nav navbar pullRight>
-              <NavItem target="_blank" rel="noopener noreferrer" title="View on Github" href="https://github.com/erikras/react-redux-universal-hot-example">
+              <NavItem target="_blank" rel="noopener noreferrer" title="View on Github" href="https://github.com/gimdongwoo/react-redux-universal-hot-boilerplate">
                 <i className="fa fa-github" />
               </NavItem>
             </Nav>
@@ -118,7 +118,7 @@ export default class App extends Component {
         <InfoBar />
 
         <div className="well text-center">
-          Have questions? Ask for help <a href="https://github.com/erikras/react-redux-universal-hot-example/issues" target="_blank" rel="noopener noreferrer">on Github</a> or in the <a href="https://discord.gg/0ZcbPKXt5bZZb1Ko" target="_blank" rel="noopener noreferrer">#react-redux-universal</a> Discord channel.
+          Have questions? Ask for help <a href="https://github.com/gimdongwoo/react-redux-universal-hot-boilerplate/issues" target="_blank" rel="noopener noreferrer">on Github</a>.
         </div>
       </div>
     );
