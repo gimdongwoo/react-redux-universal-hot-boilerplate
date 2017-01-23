@@ -172,7 +172,7 @@
     "sass-loader": "^4.0.2",
     "sinon": "^1.17.6",
     "strip-loader": "^0.1.2",
-    "style-loader": "github:gimdongwoo/style-loader",
+    "style-loader": "gimdongwoo/style-loader",
     "timekeeper": "^1.0.0",
     "webpack": "^2.2.0",
     "webpack-dev-middleware": "^1.8.4",
