@@ -78,29 +78,26 @@ export default class App extends Component {
           <Navbar.Collapse>
             <Nav navbar>
               {user && <LinkContainer to="/chat">
-                <NavItem>Chat</NavItem>
+                <NavItem eventKey={1}>Chat</NavItem>
               </LinkContainer>}
 
               <LinkContainer to="/widgets">
-                <NavItem>Widgets</NavItem>
+                <NavItem eventKey={2}>Widgets</NavItem>
               </LinkContainer>
               <LinkContainer to="/survey">
-                <NavItem>Survey</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/pagination">
-                <NavItem eventKey={4}>Pagination</NavItem>
+                <NavItem eventKey={3}>Survey</NavItem>
               </LinkContainer>
               <LinkContainer to="/about">
-                <NavItem eventKey={5}>About Us</NavItem>
+                <NavItem eventKey={4}>About Us</NavItem>
               </LinkContainer>
 
               {!user &&
               <LinkContainer to="/login">
-                <NavItem eventKey={6}>Login</NavItem>
+                <NavItem eventKey={5}>Login</NavItem>
               </LinkContainer>}
               {user &&
               <LinkContainer to="/logout">
-                <NavItem eventKey={7} className="logout-link" onClick={this.handleLogout}>
+                <NavItem eventKey={6} className="logout-link" onClick={this.handleLogout}>
                   Logout
                 </NavItem>
               </LinkContainer>}
