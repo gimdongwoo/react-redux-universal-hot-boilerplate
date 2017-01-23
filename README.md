@@ -194,7 +194,7 @@ You must use the **ExtractTextPlugin** in this loader. In `prod.config.js` modif
 ```javascript
   module: {
     loaders: [
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
+      { test: /\.css$/, loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader' })},
 ```
 
 **Now you may simply omit assigning the `required` stylesheet to a variable and keep it at the top of your `render()` function.**

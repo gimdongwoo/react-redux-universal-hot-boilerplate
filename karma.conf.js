@@ -31,20 +31,18 @@ module.exports = function (config) {
     webpack: {
       devtool: 'inline-source-map',
       module: {
-        loaders: [
-          { test: /\.(jpe?g|png|gif|svg)$/, loader: 'url', query: {limit: 10240} },
-          { test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
-          { test: /\.json$/, loader: 'json-loader' },
-          { test: /\.less$/, loader: 'style!css!less' },
-          { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss-loader!sass?outputStyle=expanded&sourceMap' }
+        rules: [
+          { test: /\.(jpe?g|png|gif|svg)$/, loader: 'url-loader', options: {limit: 10240} },
+          { test: /\.js$/, exclude: /node_modules/, use: ['babel-loader']},
+          { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
+          { test: /\.scss$/, loader: 'style-loader!css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss-loader!sass-loader?outputStyle=expanded&sourceMap' }
         ]
       },
       resolve: {
-        modulesDirectories: [
+        modules: [
           'src',
           'node_modules'
-        ],
-        extensions: ['', '.json', '.js']
+        ]
       },
       plugins: [
         new webpack.IgnorePlugin(/\.json$/),
