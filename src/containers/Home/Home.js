@@ -96,7 +96,7 @@ export default class Home extends Component {
               stylesheets
             </li>
             <li><a href="https://github.com/shakacode/bootstrap-sass-loader" target="_blank">bootstrap-sass-loader</a> and <a
-              href="https://github.com/gowravshekar/font-awesome-webpack" target="_blank">font-awesome-webpack</a> to customize Bootstrap and FontAwesome
+              href="https://github.com/tamasd/font-awesome-webpack2" target="_blank">font-awesome-webpack2</a> to customize Bootstrap and FontAwesome
             </li>
             <li><a href="http://socket.io/">socket.io</a> for real-time communication</li>
           </ul>
