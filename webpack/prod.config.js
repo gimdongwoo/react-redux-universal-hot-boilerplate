@@ -14,6 +14,8 @@ var assetsPath = path.resolve(projectRootPath, './static/dist');
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+
 module.exports = {
   devtool: 'source-map',
   context: path.resolve(__dirname, '..'),
@@ -67,6 +69,9 @@ module.exports = {
 
     // ignore dev config
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
+
+    // lodash
+    new LodashModuleReplacementPlugin,
 
     // optimizations
     new webpack.optimize.OccurrenceOrderPlugin(),
