@@ -32,10 +32,10 @@ preBootstrapCustomizations: ./src/theme/variables.scss
 
 # This gets loaded after bootstrap/variables is loaded
 # So you can refer to bootstrap variables
-bootstrapCustomizations: ./src/theme/bootstrap.overrides.scss
+# bootstrapCustomizations:
 
 # With CSS Modules we load all application styles directly in React components
-# appStyles: ./app/styles/app.scss
+appStyles: ./src/theme/bootstrap.overrides.scss
 
 ### Bootstrap styles
 styles:
