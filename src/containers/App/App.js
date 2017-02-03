@@ -69,7 +69,7 @@ export default class App extends Component {
             <Navbar.Brand>
               <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
                 <div className={styles.brand} />
-                <span className={styles.title}>{config.app.title}</span>
+                <span>{config.app.title}</span>
               </IndexLink>
             </Navbar.Brand>
             <Navbar.Toggle />
