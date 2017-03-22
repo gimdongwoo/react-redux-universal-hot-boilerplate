@@ -29,7 +29,6 @@
     "restart": "pm2 restart ./pm2.json",
     "stop": "pm2 stop ./pm2.json",
     "build": "better-npm-run build",
-    "postinstall": "npm run build",
     "lint": "eslint -c .eslintrc src api",
     "start-dev": "better-npm-run start-dev",
     "start-dev-api": "better-npm-run start-dev-api",
