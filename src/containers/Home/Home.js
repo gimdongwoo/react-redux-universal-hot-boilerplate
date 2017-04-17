@@ -1,15 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { CounterButton, GithubButton } from 'components';
 import Helmet from 'react-helmet';
+import { translate } from 'react-i18next';
 
 import config from '../../config';
 
+@translate(['common'])
 export default class Home extends Component {
+  static propTypes = {
+    t: PropTypes.func,
+  }
+
   render() {
     const styles = require('./Home.scss');
     // require the logo image both from client and server
     const logoImage = require('./logo.png');
+
+    const { t } = this.props;
     return (
       <div className={styles.home}>
         <Helmet title="Home" />
@@ -20,7 +28,7 @@ export default class Home extends Component {
                 <img src={logoImage} alt="logo" />
               </p>
             </div>
-            <h1>{config.app.title}</h1>
+            <h1>{t('content.text')}</h1>
 
             <h2>{config.app.description}</h2>
 

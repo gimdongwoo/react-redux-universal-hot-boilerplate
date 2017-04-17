@@ -31,6 +31,7 @@ This is a starter boilerplate app I've put together using the following technolo
 * [mocha](https://mochajs.org/) to allow writing unit tests for the project.
 * [pm2](https://github.com/Unitech/pm2) to process management in production
 * [lodash](https://github.com/lodash) A modern JavaScript utility library delivering modularity, performance, & extras
+* [React-i18next](https://github.com/i18next/react-i18next) Higher-order components and components for React when using i18next.
 
 I cobbled this together from a wide variety of similar "starter" repositories. As I post this in June 2015, all of these libraries are right at the bleeding edge of web development. They may fall out of fashion as quickly as they have come into it, but I personally believe that this stack is the future of web development and will survive for several years. I'm building my new projects like this, and I recommend that you do, too.
 

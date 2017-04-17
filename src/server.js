@@ -14,11 +14,16 @@ import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import createHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
 
+import i18nMiddleware from 'i18next-express-middleware';
+import { I18nextProvider } from 'react-i18next';
+
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
 import Html from './helpers/Html';
 import config from './config';
 import getRoutes from './routes';
+
+import i18n from './i18n-server';
 
 const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
 const pretty = new PrettyError();
@@ -31,6 +36,7 @@ const proxy = httpProxy.createProxyServer({
 
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
+app.use(i18nMiddleware.handle(i18n));
 
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 
@@ -73,9 +79,16 @@ app.use((req, res) => {
   const store = createStore(memoryHistory, client);
   const history = syncHistoryWithStore(memoryHistory, store);
 
+  const locale = req.language;
+  const resources = i18n.getResourceBundle(locale, 'common');
+  const i18nClient = { locale, resources };
+
+  const i18nServer = i18n.cloneInstance();
+  i18nServer.changeLanguage(locale);
+
   function hydrateOnClient() {
     res.send('<!doctype html>\n' +
-      ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} store={store} />));
+      ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} store={store} i18n={i18nClient} />));
   }
 
   if (__DISABLE_SSR__) {
@@ -93,9 +106,11 @@ app.use((req, res) => {
     } else if (renderProps) {
       loadOnServer({ ...renderProps, store, helpers: { client } }).then(() => {
         const component = (
-          <Provider store={store} key="provider">
-            <ReduxAsyncConnect {...renderProps} />
-          </Provider>
+          <I18nextProvider i18n={i18nServer}>
+            <Provider store={store} key="provider">
+              <ReduxAsyncConnect {...renderProps} />
+            </Provider>
+          </I18nextProvider>
         );
 
         res.status(200);
@@ -103,7 +118,7 @@ app.use((req, res) => {
         global.navigator = { userAgent: req.headers['user-agent'] };
 
         res.send('<!doctype html>\n' +
-          ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store} />));
+          ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store} i18n={i18nClient} />));
       });
     } else {
       res.status(404).send('Not found');

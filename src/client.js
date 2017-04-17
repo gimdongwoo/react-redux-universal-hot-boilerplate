@@ -10,6 +10,9 @@ import { Router, browserHistory, applyRouterMiddleware } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { ReduxAsyncConnect } from 'redux-connect';
 import { useScroll } from 'react-router-scroll';
+import { I18nextProvider } from 'react-i18next';
+
+import i18n from './i18n-client';
 
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
@@ -36,6 +39,9 @@ function initSocket() {
 
 global.socket = initSocket();
 
+i18n.changeLanguage(window.__i18n.locale);
+i18n.addResourceBundle(window.__i18n.locale, 'common', window.__i18n.resources, true);
+
 const component = (
   <Router render={(props) => <ReduxAsyncConnect {...props} helpers={{ client }} filter={item => !item.deferred} render={applyRouterMiddleware(useScroll())} />} history={history}>
     {getRoutes(store)}
@@ -43,9 +49,11 @@ const component = (
 );
 
 ReactDOM.render(
-  <Provider store={store} key="provider">
-    {component}
-  </Provider>,
+  <I18nextProvider i18n={i18n}>
+    <Provider store={store} key="provider">
+      {component}
+    </Provider>
+  </I18nextProvider>,
   dest
 );
 
@@ -60,12 +68,14 @@ if (process.env.NODE_ENV !== 'production') {
 if (__DEVTOOLS__ && !window.devToolsExtension) {
   const DevTools = require('./containers/DevTools/DevTools');
   ReactDOM.render(
-    <Provider store={store} key="provider">
-      <div>
-        {component}
-        <DevTools />
-      </div>
-    </Provider>,
+    <I18nextProvider i18n={i18n}>
+      <Provider store={store} key="provider">
+        <div>
+          {component}
+          <DevTools />
+        </div>
+      </Provider>
+    </I18nextProvider>,
     dest
   );
 }
