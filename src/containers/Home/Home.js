@@ -88,7 +88,7 @@ export default class Home extends Component {
             <li><a href="https://github.com/webpack/style-loader" target="_blank" rel="noopener noreferrer">style-loader</a> and <a href="https://github.com/jtangelder/sass-loader" target="_blank" rel="noopener noreferrer">sass-loader</a> to allow import of
               stylesheets
             </li>
-            <li><a href="https://github.com/shakacode/bootstrap-sass-loader" target="_blank" rel="noopener noreferrer">bootstrap-sass-loader</a> and <a href="https://github.com/tamasd/font-awesome-webpack2" target="_blank" rel="noopener noreferrer">font-awesome-webpack2</a> to customize Bootstrap and FontAwesome
+            <li><a href="https://github.com/shakacode/bootstrap-loader" target="_blank" rel="noopener noreferrer">bootstrap-loader</a> and <a href="https://github.com/gowravshekar/font-awesome-webpack" target="_blank" rel="noopener noreferrer">font-awesome-webpack</a> to customize Bootstrap and FontAwesome
             </li>
             <li><a href="http://socket.io/">socket.io</a> for real-time communication</li>
           </ul>

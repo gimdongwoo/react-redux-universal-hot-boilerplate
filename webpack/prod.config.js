@@ -22,7 +22,7 @@ module.exports = {
   entry: {
     'main': [
       require('../webpack.bootstrap.config.js').prod,
-      'font-awesome-webpack2!./src/theme/font-awesome.config.prod.js',
+      'font-awesome-webpack!./src/theme/font-awesome.config.prod.js',
       './src/client.js'
     ]
   },
